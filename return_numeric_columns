@@ -1,0 +1,23 @@
+# This question is from Testing R Code, by Richard Cotton, CRC Press (The R Series)
+# It says: Write a function that accepts a data frame and returns the number of numeric columns in the input.
+
+no_numeric_cols_df <- function(x){
+numeric_col_num <- 0;
+if (is.data.frame(x)==1){
+  df_col_num <- 1
+  last_col_checked <- (ncol(x))+1
+while (df_col_num < last_col_checked){
+  col <- x[,df_col_num];
+  if (is.numeric(col)){
+    numeric_col_num <- numeric_col_num + 1
+  }
+    df_col_num <- df_col_num + 1;
+  } # close bracket for while loop
+} # close bracket for if(is.data.frame(x)==1)
+if (is.data.frame(x)==0){
+  y<-"x is not a dataframe."
+  return(y)
+}
+y <- numeric_col_num;
+return(y)
+} # final close bracket for function
